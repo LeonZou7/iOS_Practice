@@ -7,13 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CityForPlain.h"
+#import "CityForGrouped.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property(nonatomic, strong) UIWindow* window;
 
-@property(nonatomic, strong) NSMutableArray* cities;
-@property(nonatomic, strong) NSMutableArray* details;
+@property(nonatomic, strong)CityForPlain *objectForPlain;
+@property(nonatomic, strong)CityForGrouped *objectForGrouped;
 
 @end
 

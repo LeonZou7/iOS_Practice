@@ -7,12 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B27584125076EF500668F41 /* GroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B27584025076EF500668F41 /* GroupViewController.m */; };
+		2B275845250A3E6100668F41 /* CityForPlain.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B275844250A3E6100668F41 /* CityForPlain.m */; };
+		2B275848250A3E7300668F41 /* CityForGrouped.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B275847250A3E7300668F41 /* CityForGrouped.m */; };
+		2B27584C250A599100668F41 /* PlainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B27584B250A599100668F41 /* PlainViewController.m */; };
 		2B88E2A724FF76D900CAACF9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B88E2A624FF76D900CAACF9 /* AppDelegate.m */; };
 		2B88E2AA24FF76D900CAACF9 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B88E2A924FF76D900CAACF9 /* SceneDelegate.m */; };
 		2B88E2AD24FF76D900CAACF9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B88E2AC24FF76D900CAACF9 /* ViewController.m */; };
-		2B88E2B024FF76D900CAACF9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B88E2AE24FF76D900CAACF9 /* Main.storyboard */; };
 		2B88E2B224FF76DC00CAACF9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B88E2B124FF76DC00CAACF9 /* Assets.xcassets */; };
-		2B88E2B524FF76DC00CAACF9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B88E2B324FF76DC00CAACF9 /* LaunchScreen.storyboard */; };
 		2B88E2B824FF76DC00CAACF9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B88E2B724FF76DC00CAACF9 /* main.m */; };
 		2B88E2C224FF76DC00CAACF9 /* UITableViewTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B88E2C124FF76DC00CAACF9 /* UITableViewTestTests.m */; };
 		2B88E2CD24FF76DC00CAACF9 /* UITableViewTestUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B88E2CC24FF76DC00CAACF9 /* UITableViewTestUITests.m */; };
@@ -37,6 +39,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2B27583F25076EF500668F41 /* GroupViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GroupViewController.h; sourceTree = "<group>"; };
+		2B27584025076EF500668F41 /* GroupViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GroupViewController.m; sourceTree = "<group>"; };
+		2B275843250A3E6100668F41 /* CityForPlain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CityForPlain.h; sourceTree = "<group>"; };
+		2B275844250A3E6100668F41 /* CityForPlain.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CityForPlain.m; sourceTree = "<group>"; };
+		2B275846250A3E7300668F41 /* CityForGrouped.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CityForGrouped.h; sourceTree = "<group>"; };
+		2B275847250A3E7300668F41 /* CityForGrouped.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CityForGrouped.m; sourceTree = "<group>"; };
+		2B27584A250A599100668F41 /* PlainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlainViewController.h; sourceTree = "<group>"; };
+		2B27584B250A599100668F41 /* PlainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlainViewController.m; sourceTree = "<group>"; };
 		2B88E2A224FF76D900CAACF9 /* UITableViewTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UITableViewTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B88E2A524FF76D900CAACF9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2B88E2A624FF76D900CAACF9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -44,9 +54,7 @@
 		2B88E2A924FF76D900CAACF9 /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
 		2B88E2AB24FF76D900CAACF9 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		2B88E2AC24FF76D900CAACF9 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		2B88E2AF24FF76D900CAACF9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2B88E2B124FF76DC00CAACF9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		2B88E2B424FF76DC00CAACF9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2B88E2B624FF76DC00CAACF9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2B88E2B724FF76DC00CAACF9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2B88E2BD24FF76DC00CAACF9 /* UITableViewTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UITableViewTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -84,6 +92,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2B275842250A3E2E00668F41 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2B275843250A3E6100668F41 /* CityForPlain.h */,
+				2B275844250A3E6100668F41 /* CityForPlain.m */,
+				2B275846250A3E7300668F41 /* CityForGrouped.h */,
+				2B275847250A3E7300668F41 /* CityForGrouped.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2B275849250A596600668F41 /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				2BBA341725009F93003FEA44 /* DetailViewController.h */,
+				2BBA341825009F93003FEA44 /* DetailViewController.m */,
+				2B27584A250A599100668F41 /* PlainViewController.h */,
+				2B27584B250A599100668F41 /* PlainViewController.m */,
+				2B27583F25076EF500668F41 /* GroupViewController.h */,
+				2B27584025076EF500668F41 /* GroupViewController.m */,
+			);
+			path = VC;
+			sourceTree = "<group>";
+		};
 		2B88E29924FF76D900CAACF9 = {
 			isa = PBXGroup;
 			children = (
@@ -107,18 +139,16 @@
 		2B88E2A424FF76D900CAACF9 /* UITableViewTest */ = {
 			isa = PBXGroup;
 			children = (
+				2B275849250A596600668F41 /* VC */,
+				2B275842250A3E2E00668F41 /* Model */,
 				2B88E2A524FF76D900CAACF9 /* AppDelegate.h */,
 				2B88E2A624FF76D900CAACF9 /* AppDelegate.m */,
 				2B88E2A824FF76D900CAACF9 /* SceneDelegate.h */,
 				2B88E2A924FF76D900CAACF9 /* SceneDelegate.m */,
 				2B88E2AB24FF76D900CAACF9 /* ViewController.h */,
 				2B88E2AC24FF76D900CAACF9 /* ViewController.m */,
-				2B88E2AE24FF76D900CAACF9 /* Main.storyboard */,
 				2B88E2B124FF76DC00CAACF9 /* Assets.xcassets */,
-				2B88E2B324FF76DC00CAACF9 /* LaunchScreen.storyboard */,
 				2B88E2B624FF76DC00CAACF9 /* Info.plist */,
-				2BBA341725009F93003FEA44 /* DetailViewController.h */,
-				2BBA341825009F93003FEA44 /* DetailViewController.m */,
 				2B88E2B724FF76DC00CAACF9 /* main.m */,
 			);
 			path = UITableViewTest;
@@ -245,9 +275,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2B88E2B524FF76DC00CAACF9 /* LaunchScreen.storyboard in Resources */,
 				2B88E2B224FF76DC00CAACF9 /* Assets.xcassets in Resources */,
-				2B88E2B024FF76D900CAACF9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,10 +300,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B27584125076EF500668F41 /* GroupViewController.m in Sources */,
+				2B275848250A3E7300668F41 /* CityForGrouped.m in Sources */,
 				2BBA341925009F93003FEA44 /* DetailViewController.m in Sources */,
 				2B88E2AD24FF76D900CAACF9 /* ViewController.m in Sources */,
+				2B27584C250A599100668F41 /* PlainViewController.m in Sources */,
 				2B88E2A724FF76D900CAACF9 /* AppDelegate.m in Sources */,
 				2B88E2B824FF76DC00CAACF9 /* main.m in Sources */,
+				2B275845250A3E6100668F41 /* CityForPlain.m in Sources */,
 				2B88E2AA24FF76D900CAACF9 /* SceneDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -310,25 +342,6 @@
 			targetProxy = 2B88E2C924FF76DC00CAACF9 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		2B88E2AE24FF76D900CAACF9 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2B88E2AF24FF76D900CAACF9 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		2B88E2B324FF76DC00CAACF9 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2B88E2B424FF76DC00CAACF9 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		2B88E2CF24FF76DC00CAACF9 /* Debug */ = {
