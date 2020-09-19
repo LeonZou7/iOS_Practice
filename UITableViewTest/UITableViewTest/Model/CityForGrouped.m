@@ -2,8 +2,8 @@
 //  CityForGrouped.m
 //  UITableViewTest
 //
-//  Created by bytedance on 2020/9/10.
-//  Copyright © 2020 bytedance. All rights reserved.
+//  Created by Leon Zou on 2020/9/10.
+//  Copyright © 2020 Leon Zou. All rights reserved.
 //
 
 #import "CityForGrouped.h"
@@ -21,6 +21,17 @@
         self.details = [NSMutableArray arrayWithObjects:@"first", @"second", @"third", nil];
     }
     return self;
+}
+
+- (NSString *)detailByName:(NSString *)cityName {
+    if ([self.first containsObject:cityName]) {
+        return [self.details objectAtIndex:[self.first indexOfObject:cityName]];
+    } else if ([self.second containsObject:cityName]) {
+        return [self.details objectAtIndex:[self.second indexOfObject:cityName]];
+    } else if ([self.third containsObject:cityName]) {
+        return [self.details objectAtIndex:[self.third indexOfObject:cityName]];
+    }
+    return @"";
 }
 
 @end

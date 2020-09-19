@@ -2,8 +2,8 @@
 //  AppDelegate.m
 //  UITableViewTest
 //
-//  Created by bytedance on 2020/9/2.
-//  Copyright © 2020 bytedance. All rights reserved.
+//  Created by Leon Zou on 2020/9/2.
+//  Copyright © 2020 Leon Zou. All rights reserved.
 //
 
 #import "AppDelegate.h"
@@ -26,15 +26,9 @@
      */
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-
+    
     self.objectForPlain = [[CityForPlain alloc] init];
     self.objectForGrouped = [[CityForGrouped alloc] init];
-    
-    UITabBarController *tabBarController = [[UITabBarController alloc] init];
-    
-    //TODO: add plain and grouped view to tabBar, and make the switch accessable
-    //PlainViewController *plainViewController = [[PlainViewController alloc] init];
-    //GroupViewController *groupedViewController = [[GroupViewController alloc] init];
     
     PlainViewController *plainVC = [[PlainViewController alloc] init];
     plainVC.view.backgroundColor = [UIColor cyanColor];
@@ -44,14 +38,20 @@
     groupedVC.view.backgroundColor = [UIColor purpleColor];
     groupedVC.tabBarItem.title = @"Grouped";
     
-    [tabBarController setViewControllers:@[plainVC, groupedVC]];
+    // TODO: add a button and a imageView on the start view, button for camera and the imageView for pic
+    // TODO: complete the navigationBar with more barItems
+    ViewController *viewController = [[ViewController alloc] init];   // navigationController's default view
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
+    navigationController.tabBarItem.title = @"Home";
+    
+    UITabBarController *tabBarController = [[UITabBarController alloc] init];
+    
+    [tabBarController setViewControllers:@[navigationController, plainVC, groupedVC]];
     
     self.window.rootViewController = tabBarController;
     [self.window makeKeyAndVisible];    //让window成为主窗口并显示
-        
+    
     return YES;
 }
-
-
 
 @end

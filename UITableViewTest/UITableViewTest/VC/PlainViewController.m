@@ -2,8 +2,8 @@
 //  PlainViewController.m
 //  UITableViewTest
 //
-//  Created by bytedance on 2020/9/10.
-//  Copyright © 2020 bytedance. All rights reserved.
+//  Created by Leon Zou on 2020/9/10.
+//  Copyright © 2020 Leon Zou. All rights reserved.
 //
 
 #import "PlainViewController.h"
@@ -104,7 +104,7 @@ AppDelegate *appDelegate;
     [cell.detailTextLabel setText:[appDelegate.objectForPlain.details objectAtIndex:rowIndex]];    //设置详细文本
     
     NSInteger imgIndex = (arc4random() % 3) + 1;
-    NSLog(@"%ld", (long)imgIndex);
+    //NSLog(@"%ld", (long)imgIndex);
     switch (imgIndex) {
         case 1:
             [cell.imageView setImage:[UIImage imageNamed:@"/Users/bytedance/Desktop/Bytedance/iOS_Test/UITableViewTest/UITableViewTest/pic1.jpeg"]];
@@ -119,7 +119,7 @@ AppDelegate *appDelegate;
         default:
             break;
     }
-        
+    
     [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];    //设置附加按钮样式
     /*  AccessoryType参数如下：
      UITableViewCellAccessoryNone   无样式

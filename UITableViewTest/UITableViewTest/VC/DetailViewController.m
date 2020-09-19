@@ -2,8 +2,8 @@
 //  DetailViewController.m
 //  UITableViewTest
 //
-//  Created by bytedance on 2020/9/3.
-//  Copyright © 2020 bytedance. All rights reserved.
+//  Created by Leon Zou on 2020/9/3.
+//  Copyright © 2020 Leon Zou. All rights reserved.
 //
 
 #import "DetailViewController.h"

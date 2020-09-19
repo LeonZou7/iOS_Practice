@@ -2,8 +2,8 @@
 //  CityForPlain.h
 //  UITableViewTest
 //
-//  Created by bytedance on 2020/9/10.
-//  Copyright © 2020 bytedance. All rights reserved.
+//  Created by Leon Zou on 2020/9/10.
+//  Copyright © 2020 Leon Zou. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -14,6 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property(nonatomic, strong)NSMutableArray *cities;
 @property(nonatomic, strong)NSMutableArray *details;
+
+- (NSString *)detailByName:(NSString *)cityName;
 
 @end
 

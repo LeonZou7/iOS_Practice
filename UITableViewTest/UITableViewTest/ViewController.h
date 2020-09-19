@@ -2,14 +2,13 @@
 //  ViewController.h
 //  UITableViewTest
 //
-//  Created by bytedance on 2020/9/2.
-//  Copyright © 2020 bytedance. All rights reserved.
+//  Created by Leon Zou on 2020/9/2.
+//  Copyright © 2020 Leon Zou. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface ViewController : UIViewController<UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 
 @end

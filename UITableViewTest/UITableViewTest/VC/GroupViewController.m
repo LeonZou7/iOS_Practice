@@ -2,8 +2,8 @@
 //  GroupViewController.m
 //  UITableViewTest
 //
-//  Created by bytedance on 2020/9/8.
-//  Copyright © 2020 bytedance. All rights reserved.
+//  Created by Leon Zou on 2020/9/8.
+//  Copyright © 2020 Leon Zou. All rights reserved.
 //
 
 #import "GroupViewController.h"
@@ -23,7 +23,7 @@ extern AppDelegate *appDelegate;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+    // TODO: 下拉刷新
     appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
     UITableView *groupedView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, appDelegate.window.bounds.size.width, appDelegate.window.bounds.size.height) style:UITableViewStyleGrouped];
@@ -118,6 +118,11 @@ extern AppDelegate *appDelegate;
             break;
     }
     
+    UILongPressGestureRecognizer *longPressGR = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(itemDidLongPressed:)];
+    longPressGR.name = cell.textLabel.text;
+    longPressGR.minimumPressDuration = 0.5f;
+    [cell addGestureRecognizer:longPressGR];
+    
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
 }
@@ -163,6 +168,23 @@ extern AppDelegate *appDelegate;
 
 - (void)detailViewControllerDidChange:(DetailViewController *)viewController {
     [self.groupedTableView reloadData];
+}
+
+#pragma mark - UILongPressGestureRecognizer
+
+- (void)itemDidLongPressed:(UILongPressGestureRecognizer *)sender {
+    if (sender.state == UIGestureRecognizerStateBegan) {
+        NSLog(@"Long press detected.");
+    }
+
+    NSString *detailStr = [appDelegate.objectForGrouped detailByName:sender.name];
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Detail" message:detailStr preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+    
+    [alertController addAction:okAction];
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 @end
