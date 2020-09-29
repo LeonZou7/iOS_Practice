@@ -3,22 +3,32 @@
 //  UITableViewTest
 //
 //  Created by Leon Zou on 2020/9/10.
-//  Copyright © 2020 Leon Zou. All rights reserved.
 //
 
 #import "PlainViewController.h"
 #import "AppDelegate.h"
 #import "DetailViewController.h"
+#import "CityForPlain.h"
 
 @interface PlainViewController ()<UITableViewDelegate, UITableViewDataSource, DetailViewControllerDelegate>
 
-@property (nonatomic, strong) UITableView *plainTableView;
+@property(nonatomic, strong) UITableView *plainTableView;
 
 @end
 
 AppDelegate *appDelegate;
 
 @implementation PlainViewController
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.view.backgroundColor = [UIColor cyanColor];
+        self.tabBarItem.title = @"Plain";
+    }
+    
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -49,7 +59,6 @@ AppDelegate *appDelegate;
     [footerLabel setText:@"Created by Leon"];
     [tableView setTableFooterView:footerLabel];     //设置页脚
     
-    //[tableView setRowHeight:50];    //设置行cell高度
     [tableView setSeparatorColor:[UIColor redColor]];   //设置分割线颜色
     [tableView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];  //设置分割线风格
     /*  分割线参数如下：
@@ -74,13 +83,13 @@ AppDelegate *appDelegate;
 //@required
 //返回分区数据的数量
 -(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [appDelegate.objectForPlain.cities count];
+    return [[CityForPlain sharedSingleton].cities count];
 }
 
 //@required
 //返回每行的单元格，提供显示的数据
 -(UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString* ID = @"cell";
+    static NSString* ID = @"PlainCell";
     UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:ID];   //可重用cell
     
     if(cell == nil) {   //当取出的cell是nil时，创建一个cell并绑定ID
@@ -100,20 +109,20 @@ AppDelegate *appDelegate;
     //该类别有section和row两个属性，section标识当前cell处于第几个section中，
     //row代表在该section中的第几行。
     NSInteger rowIndex = indexPath.row;     //从indexPath拿到当前的行号
-    [cell.textLabel setText:[appDelegate.objectForPlain.cities objectAtIndex:rowIndex]];   //根据行号设置文本
-    [cell.detailTextLabel setText:[appDelegate.objectForPlain.details objectAtIndex:rowIndex]];    //设置详细文本
+    [cell.textLabel setText:[[CityForPlain sharedSingleton].cities objectAtIndex:rowIndex]];   //根据行号设置文本
+    [cell.detailTextLabel setText:[[CityForPlain sharedSingleton].details objectAtIndex:rowIndex]];    //设置详细文本
     
     NSInteger imgIndex = (arc4random() % 3) + 1;
     //NSLog(@"%ld", (long)imgIndex);
     switch (imgIndex) {
         case 1:
-            [cell.imageView setImage:[UIImage imageNamed:@"/Users/bytedance/Desktop/Bytedance/iOS_Test/UITableViewTest/UITableViewTest/pic1.jpeg"]];
+            [cell.imageView setImage:[UIImage imageNamed:@"pic1"]];
             break;
         case 2:
-            [cell.imageView setImage:[UIImage imageNamed:@"/Users/bytedance/Desktop/Bytedance/iOS_Test/UITableViewTest/UITableViewTest/pic2.jpeg"]];
+            [cell.imageView setImage:[UIImage imageNamed:@"pic2"]];
             break;
         case 3:
-            [cell.imageView setImage:[UIImage imageNamed:@"/Users/bytedance/Desktop/Bytedance/iOS_Test/UITableViewTest/UITableViewTest/pic3.jpeg"]];
+            [cell.imageView setImage:[UIImage imageNamed:@"pic3"]];
             break;
             
         default:
@@ -159,7 +168,7 @@ AppDelegate *appDelegate;
 //@optional
 //点击左滑文本之后的调用方法（和上面的方法配套使用）
 -(void) tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    [appDelegate.objectForPlain.cities removeObjectAtIndex:indexPath.row];     //从数据源处删除
+    [[CityForPlain sharedSingleton].cities removeObjectAtIndex:indexPath.row];     //从数据源处删除
     
     [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];   //从视图列表中删除
 }

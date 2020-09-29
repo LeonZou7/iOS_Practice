@@ -3,12 +3,22 @@
 //  UITableViewTest
 //
 //  Created by Leon Zou on 2020/9/10.
-//  Copyright © 2020 Leon Zou. All rights reserved.
 //
 
 #import "CityForPlain.h"
 
+static CityForPlain *sharedSingleton = nil;
+
 @implementation CityForPlain
+
++ (CityForPlain *)sharedSingleton {    
+    static dispatch_once_t once;
+    dispatch_once(&once, ^{
+        sharedSingleton = [[CityForPlain alloc] init];
+    });
+    
+    return sharedSingleton;
+}
 
 - (instancetype)init {
     if (self = [super init]) {

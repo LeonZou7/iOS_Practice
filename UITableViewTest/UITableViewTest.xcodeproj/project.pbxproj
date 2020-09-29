@@ -7,19 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B0B401D2519A0F500B06E12 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B0B401C2519A0F500B06E12 /* LoginViewController.m */; };
 		2B27584125076EF500668F41 /* GroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B27584025076EF500668F41 /* GroupViewController.m */; };
 		2B275845250A3E6100668F41 /* CityForPlain.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B275844250A3E6100668F41 /* CityForPlain.m */; };
 		2B275848250A3E7300668F41 /* CityForGrouped.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B275847250A3E7300668F41 /* CityForGrouped.m */; };
 		2B27584C250A599100668F41 /* PlainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B27584B250A599100668F41 /* PlainViewController.m */; };
 		2B3928912511C1EB00528191 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B3928902511C1EB00528191 /* User.m */; };
 		2B88E2A724FF76D900CAACF9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B88E2A624FF76D900CAACF9 /* AppDelegate.m */; };
-		2B88E2AA24FF76D900CAACF9 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B88E2A924FF76D900CAACF9 /* SceneDelegate.m */; };
-		2B88E2AD24FF76D900CAACF9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B88E2AC24FF76D900CAACF9 /* ViewController.m */; };
+		2B88E2AD24FF76D900CAACF9 /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B88E2AC24FF76D900CAACF9 /* CameraViewController.m */; };
 		2B88E2B224FF76DC00CAACF9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B88E2B124FF76DC00CAACF9 /* Assets.xcassets */; };
 		2B88E2B824FF76DC00CAACF9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B88E2B724FF76DC00CAACF9 /* main.m */; };
 		2B88E2C224FF76DC00CAACF9 /* UITableViewTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B88E2C124FF76DC00CAACF9 /* UITableViewTestTests.m */; };
 		2B88E2CD24FF76DC00CAACF9 /* UITableViewTestUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B88E2CC24FF76DC00CAACF9 /* UITableViewTestUITests.m */; };
 		2BBA341925009F93003FEA44 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BBA341825009F93003FEA44 /* DetailViewController.m */; };
+		2BCC91D12516FF910028DAFE /* ScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCC91D02516FF910028DAFE /* ScrollViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2B0B401B2519A0F500B06E12 /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		2B0B401C2519A0F500B06E12 /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		2B27583F25076EF500668F41 /* GroupViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GroupViewController.h; sourceTree = "<group>"; };
 		2B27584025076EF500668F41 /* GroupViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GroupViewController.m; sourceTree = "<group>"; };
 		2B275843250A3E6100668F41 /* CityForPlain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CityForPlain.h; sourceTree = "<group>"; };
@@ -53,10 +56,8 @@
 		2B88E2A224FF76D900CAACF9 /* UITableViewTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UITableViewTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B88E2A524FF76D900CAACF9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2B88E2A624FF76D900CAACF9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		2B88E2A824FF76D900CAACF9 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
-		2B88E2A924FF76D900CAACF9 /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
-		2B88E2AB24FF76D900CAACF9 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		2B88E2AC24FF76D900CAACF9 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		2B88E2AB24FF76D900CAACF9 /* CameraViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CameraViewController.h; sourceTree = "<group>"; };
+		2B88E2AC24FF76D900CAACF9 /* CameraViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CameraViewController.m; sourceTree = "<group>"; };
 		2B88E2B124FF76DC00CAACF9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2B88E2B624FF76DC00CAACF9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2B88E2B724FF76DC00CAACF9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -68,6 +69,8 @@
 		2B88E2CE24FF76DC00CAACF9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2BBA341725009F93003FEA44 /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		2BBA341825009F93003FEA44 /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		2BCC91CF2516FF910028DAFE /* ScrollViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScrollViewController.h; sourceTree = "<group>"; };
+		2BCC91D02516FF910028DAFE /* ScrollViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScrollViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,12 +114,18 @@
 		2B275849250A596600668F41 /* VC */ = {
 			isa = PBXGroup;
 			children = (
-				2BBA341725009F93003FEA44 /* DetailViewController.h */,
-				2BBA341825009F93003FEA44 /* DetailViewController.m */,
+				2B0B401B2519A0F500B06E12 /* LoginViewController.h */,
+				2B0B401C2519A0F500B06E12 /* LoginViewController.m */,
+				2B88E2AB24FF76D900CAACF9 /* CameraViewController.h */,
+				2B88E2AC24FF76D900CAACF9 /* CameraViewController.m */,
 				2B27584A250A599100668F41 /* PlainViewController.h */,
 				2B27584B250A599100668F41 /* PlainViewController.m */,
 				2B27583F25076EF500668F41 /* GroupViewController.h */,
 				2B27584025076EF500668F41 /* GroupViewController.m */,
+				2BBA341725009F93003FEA44 /* DetailViewController.h */,
+				2BBA341825009F93003FEA44 /* DetailViewController.m */,
+				2BCC91CF2516FF910028DAFE /* ScrollViewController.h */,
+				2BCC91D02516FF910028DAFE /* ScrollViewController.m */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -148,10 +157,6 @@
 				2B275842250A3E2E00668F41 /* Model */,
 				2B88E2A524FF76D900CAACF9 /* AppDelegate.h */,
 				2B88E2A624FF76D900CAACF9 /* AppDelegate.m */,
-				2B88E2A824FF76D900CAACF9 /* SceneDelegate.h */,
-				2B88E2A924FF76D900CAACF9 /* SceneDelegate.m */,
-				2B88E2AB24FF76D900CAACF9 /* ViewController.h */,
-				2B88E2AC24FF76D900CAACF9 /* ViewController.m */,
 				2B88E2B124FF76DC00CAACF9 /* Assets.xcassets */,
 				2B88E2B624FF76DC00CAACF9 /* Info.plist */,
 				2B88E2B724FF76DC00CAACF9 /* main.m */,
@@ -240,7 +245,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 1200;
-				ORGANIZATIONNAME = bytedance;
+				ORGANIZATIONNAME = "";
 				TargetAttributes = {
 					2B88E2A124FF76D900CAACF9 = {
 						CreatedOnToolsVersion = 11.6;
@@ -309,12 +314,13 @@
 				2B27584125076EF500668F41 /* GroupViewController.m in Sources */,
 				2B275848250A3E7300668F41 /* CityForGrouped.m in Sources */,
 				2BBA341925009F93003FEA44 /* DetailViewController.m in Sources */,
-				2B88E2AD24FF76D900CAACF9 /* ViewController.m in Sources */,
+				2B0B401D2519A0F500B06E12 /* LoginViewController.m in Sources */,
+				2BCC91D12516FF910028DAFE /* ScrollViewController.m in Sources */,
+				2B88E2AD24FF76D900CAACF9 /* CameraViewController.m in Sources */,
 				2B27584C250A599100668F41 /* PlainViewController.m in Sources */,
 				2B88E2A724FF76D900CAACF9 /* AppDelegate.m in Sources */,
 				2B88E2B824FF76DC00CAACF9 /* main.m in Sources */,
 				2B275845250A3E6100668F41 /* CityForPlain.m in Sources */,
-				2B88E2AA24FF76D900CAACF9 /* SceneDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

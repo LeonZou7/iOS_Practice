@@ -3,12 +3,14 @@
 //  UITableViewTest
 //
 //  Created by Leon Zou on 2020/9/2.
-//  Copyright © 2020 Leon Zou. All rights reserved.
 //
 
 #import "AppDelegate.h"
 #import "PlainViewController.h"
 #import "GroupViewController.h"
+#import "ScrollViewController.h"
+#import "LoginViewController.h"
+#import "CameraViewController.h"
 
 @interface AppDelegate ()
 
@@ -26,32 +28,33 @@
      */
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+        
+    LoginViewController *loginVC = [[LoginViewController alloc] init];
+    self.window.rootViewController = loginVC;
     
-    self.objectForPlain = [[CityForPlain alloc] init];
-    self.objectForGrouped = [[CityForGrouped alloc] init];
-    
-    PlainViewController *plainVC = [[PlainViewController alloc] init];
-    plainVC.view.backgroundColor = [UIColor cyanColor];
-    plainVC.tabBarItem.title = @"Plain";
-    
-    GroupViewController *groupedVC = [[GroupViewController alloc] init];
-    groupedVC.view.backgroundColor = [UIColor purpleColor];
-    groupedVC.tabBarItem.title = @"Grouped";
-    
-    // TODO: add a button and a imageView on the start view, button for camera and the imageView for pic
-    // TODO: complete the navigationBar with more barItems
-    ViewController *viewController = [[ViewController alloc] init];   // navigationController's default view
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
-    navigationController.tabBarItem.title = @"Home";
-    
-    UITabBarController *tabBarController = [[UITabBarController alloc] init];
-    
-    [tabBarController setViewControllers:@[navigationController, plainVC, groupedVC]];
-    
-    self.window.rootViewController = tabBarController;
     [self.window makeKeyAndVisible];    //让window成为主窗口并显示
-    
+
     return YES;
+}
+
+- (UIViewController *)displayMainViewAfterLogin {
+    // mainView
+    PlainViewController *plainVC = [[PlainViewController alloc] init];
+    GroupViewController *groupedVC = [[GroupViewController alloc] init];
+    ScrollViewController *scrollVC = [[ScrollViewController alloc] init];
+
+    // TODO: create a scrollView which contains 2 tableView (plain and grouped)
+    CameraViewController *cameraVC = [[CameraViewController alloc] init];   // navigationController's default view
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:cameraVC];
+    navigationController.tabBarItem.title = @"Home";
+
+    UITabBarController *tabBarController = [[UITabBarController alloc] init];
+
+    [tabBarController setViewControllers:@[navigationController, plainVC, groupedVC, scrollVC]];
+
+    self.window.rootViewController = tabBarController;
+    
+    return tabBarController;
 }
 
 @end

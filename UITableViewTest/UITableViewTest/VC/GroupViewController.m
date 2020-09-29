@@ -3,12 +3,12 @@
 //  UITableViewTest
 //
 //  Created by Leon Zou on 2020/9/8.
-//  Copyright © 2020 Leon Zou. All rights reserved.
 //
 
 #import "GroupViewController.h"
 #import "AppDelegate.h"
 #import "DetailViewController.h"
+#import "CityForGrouped.h"
 
 @interface GroupViewController ()<UITableViewDelegate, UITableViewDataSource, DetailViewControllerDelegate>
 
@@ -19,6 +19,16 @@
 extern AppDelegate *appDelegate;
 
 @implementation GroupViewController
+ 
+- (instancetype)init{
+    self = [super init];
+    if (self) {
+        [self.view setBackgroundColor:[UIColor blueColor]];
+        self.tabBarItem.title = @"Grouped";
+    }
+    
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -67,23 +77,23 @@ extern AppDelegate *appDelegate;
 
 // number of section
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return [appDelegate.objectForGrouped.head count];
+    return [[CityForGrouped sharedSingleton].head count];
 }
 
 // title of section
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return [appDelegate.objectForGrouped.head objectAtIndex:section];
+    return [[CityForGrouped sharedSingleton].head objectAtIndex:section];
 }
 
 // number of items for each section
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     switch (section) {
         case 0:
-            return [appDelegate.objectForGrouped.first count];
+            return [[CityForGrouped sharedSingleton].first count];
         case 1:
-            return [appDelegate.objectForGrouped.second count];
+            return [[CityForGrouped sharedSingleton].second count];
         case 2:
-            return [appDelegate.objectForGrouped.third count];
+            return [[CityForGrouped sharedSingleton].third count];
         default:
             return 0;
     }
@@ -91,7 +101,7 @@ extern AppDelegate *appDelegate;
 
 // cell
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *ID = @"cell";
+    static NSString *ID = @"GroupedCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
     
     if (cell == nil) {
@@ -100,18 +110,18 @@ extern AppDelegate *appDelegate;
     
     switch (indexPath.section) {
         case 0:
-            cell.textLabel.text = [appDelegate.objectForGrouped.first objectAtIndex:indexPath.row];
-            cell.imageView.image = [UIImage imageNamed:@"/Users/bytedance/Desktop/Bytedance/iOS_Test/UITableViewTest/UITableViewTest/pic1.jpeg"];
+            cell.textLabel.text = [[CityForGrouped sharedSingleton].first objectAtIndex:indexPath.row];
+            cell.imageView.image = [UIImage imageNamed:@"pic1"];
             break;
         
         case 1:
-        cell.textLabel.text = [appDelegate.objectForGrouped.second objectAtIndex:indexPath.row];
-        cell.imageView.image = [UIImage imageNamed:@"/Users/bytedance/Desktop/Bytedance/iOS_Test/UITableViewTest/UITableViewTest/pic2.jpeg"];
+        cell.textLabel.text = [[CityForGrouped sharedSingleton].second objectAtIndex:indexPath.row];
+        cell.imageView.image = [UIImage imageNamed:@"pic2"];
         break;
         
         case 2:
-        cell.textLabel.text = [appDelegate.objectForGrouped.third objectAtIndex:indexPath.row];
-        cell.imageView.image = [UIImage imageNamed:@"/Users/bytedance/Desktop/Bytedance/iOS_Test/UITableViewTest/UITableViewTest/pic3.jpeg"];
+        cell.textLabel.text = [[CityForGrouped sharedSingleton].third objectAtIndex:indexPath.row];
+        cell.imageView.image = [UIImage imageNamed:@"pic3"];
         break;
             
         default:
@@ -134,15 +144,15 @@ extern AppDelegate *appDelegate;
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     switch (indexPath.section) {
         case 0:
-            [appDelegate.objectForGrouped.first removeObjectAtIndex:indexPath.row];
+            [[CityForGrouped sharedSingleton].first removeObjectAtIndex:indexPath.row];
             break;
         
         case 1:
-            [appDelegate.objectForGrouped.second removeObjectAtIndex:indexPath.row];
+            [[CityForGrouped sharedSingleton].second removeObjectAtIndex:indexPath.row];
             break;
             
         case 2:
-            [appDelegate.objectForGrouped.third removeObjectAtIndex:indexPath.row];
+            [[CityForGrouped sharedSingleton].third removeObjectAtIndex:indexPath.row];
             break;
             
         default:
@@ -177,7 +187,7 @@ extern AppDelegate *appDelegate;
         NSLog(@"Long press detected.");
     }
 
-    NSString *detailStr = [appDelegate.objectForGrouped detailByName:sender.name];
+    NSString *detailStr = [[CityForGrouped sharedSingleton] detailByName:sender.name];
     
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Detail" message:detailStr preferredStyle:UIAlertControllerStyleAlert];
     

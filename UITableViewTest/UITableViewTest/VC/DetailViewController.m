@@ -3,21 +3,20 @@
 //  UITableViewTest
 //
 //  Created by Leon Zou on 2020/9/3.
-//  Copyright © 2020 Leon Zou. All rights reserved.
 //
 
 #import "DetailViewController.h"
-#import "ViewController.h"
-#import "AppDelegate.h"
+#import "CameraViewController.h"
+#import "CityForPlain.h"
+#import "CityForGrouped.h"
 
-@interface ViewController ()
+@interface CameraViewController ()
 
 @end
 
 //当前编辑的表格行号
 UITextField* cityField;
 UITextField* detailField;
-extern AppDelegate *appDelegate;
 
 @implementation DetailViewController
 
@@ -69,7 +68,7 @@ extern AppDelegate *appDelegate;
 // get default title from table
 - (NSString *)defaultTitle {
     if (self.tableType == 1) {
-        return [appDelegate.objectForPlain.cities objectAtIndex:self.editingIndexPath.row];
+        return [[CityForPlain sharedSingleton].cities objectAtIndex:self.editingIndexPath.row];
     } else {
         return [[self arrayInGroupedViewWithIndex:self.editingIndexPath.section] objectAtIndex:self.editingIndexPath.row];
     }
@@ -78,20 +77,20 @@ extern AppDelegate *appDelegate;
 // get default value from table
 - (NSString *)defaultValue {
     if (self.tableType == 1) {
-        return [appDelegate.objectForPlain.details objectAtIndex:self.editingIndexPath.row];
+        return [[CityForPlain sharedSingleton].details objectAtIndex:self.editingIndexPath.row];
     } else {
-        return [appDelegate.objectForGrouped.details objectAtIndex:self.editingIndexPath.row];
+        return [[CityForGrouped sharedSingleton].details objectAtIndex:self.editingIndexPath.row];
     }
 }
 
 // get different groups from groupedView
 - (NSMutableArray *)arrayInGroupedViewWithIndex: (NSInteger)index {
     if (index == 0) {
-        return appDelegate.objectForGrouped.first;
+        return [CityForGrouped sharedSingleton].first;
     } else if (index == 1) {
-        return appDelegate.objectForGrouped.second;
+        return [CityForGrouped sharedSingleton].second;
     } else {
-        return appDelegate.objectForGrouped.third;
+        return [CityForGrouped sharedSingleton].third;
     }
 }
 
@@ -103,15 +102,12 @@ extern AppDelegate *appDelegate;
 
 -(void) commitChange: (id)sender {
     if (self.tableType == 1) {
-        [appDelegate.objectForPlain.cities replaceObjectAtIndex:self.editingIndexPath.row withObject:[cityField text]];     //替换city
-        [appDelegate.objectForPlain.details replaceObjectAtIndex:self.editingIndexPath.row withObject:[detailField text]];      //替换detail
+        [[CityForPlain sharedSingleton].cities replaceObjectAtIndex:self.editingIndexPath.row withObject:[cityField text]];     //替换city
+        [[CityForPlain sharedSingleton].details replaceObjectAtIndex:self.editingIndexPath.row withObject:[detailField text]];      //替换detail
     } else {
         [[self arrayInGroupedViewWithIndex:self.editingIndexPath.section] replaceObjectAtIndex:self.editingIndexPath.row withObject:cityField.text];
-        [appDelegate.objectForGrouped.details replaceObjectAtIndex:self.editingIndexPath.row withObject:detailField.text];
+        [[CityForGrouped sharedSingleton].details replaceObjectAtIndex:self.editingIndexPath.row withObject:detailField.text];
     }
-    
-//    NSLog(@"%@", [appDelegate.cities objectAtIndex:rowIndex]);
-//    NSLog(@"%@", [appDelegate.details objectAtIndex:rowIndex]);
     
     //why respondsToSelector ->  A protection, to make sure the object does have the method we want
     if ([self.delegate respondsToSelector:@selector(detailViewControllerDidChange:)]) {

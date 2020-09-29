@@ -3,12 +3,22 @@
 //  UITableViewTest
 //
 //  Created by Leon Zou on 2020/9/10.
-//  Copyright © 2020 Leon Zou. All rights reserved.
 //
 
 #import "CityForGrouped.h"
 
+static CityForGrouped *sharedSingleton = nil;
+
 @implementation CityForGrouped
+
++ (CityForGrouped *)sharedSingleton {
+    static dispatch_once_t once;
+    dispatch_once(&once, ^{
+        sharedSingleton = [[CityForGrouped alloc] init];
+    });
+    
+    return sharedSingleton;
+}
 
 - (instancetype)init {
     if (self = [super init]) {
