@@ -74,7 +74,7 @@ UITextField* detailField;
     }
 }
 
-// get default value from table
+// get default detail from table
 - (NSString *)defaultValue {
     if (self.tableType == 1) {
         return [[CityForPlain sharedSingleton].details objectAtIndex:self.editingIndexPath.row];
@@ -94,12 +94,6 @@ UITextField* detailField;
     }
 }
 
-// close keyboard when click the blank area of screen
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    [super touchesBegan:touches withEvent:event];
-    [self.view endEditing:YES];
-}
-
 -(void) commitChange: (id)sender {
     if (self.tableType == 1) {
         [[CityForPlain sharedSingleton].cities replaceObjectAtIndex:self.editingIndexPath.row withObject:[cityField text]];     //替换city
@@ -109,7 +103,7 @@ UITextField* detailField;
         [[CityForGrouped sharedSingleton].details replaceObjectAtIndex:self.editingIndexPath.row withObject:detailField.text];
     }
     
-    //why respondsToSelector ->  A protection, to make sure the object does have the method we want
+    //why respondsToSelector ->  A protection, to make sure the object does have the method which is called
     if ([self.delegate respondsToSelector:@selector(detailViewControllerDidChange:)]) {
         [self.delegate detailViewControllerDidChange:self];
     }
@@ -119,6 +113,12 @@ UITextField* detailField;
 
 -(void) clickToClose: (id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+// close keyboard when click the blank area of screen
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [super touchesBegan:touches withEvent:event];
+    [self.view endEditing:YES];
 }
 
 @end

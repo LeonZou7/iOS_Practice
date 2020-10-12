@@ -13,6 +13,7 @@
 @interface GroupViewController ()<UITableViewDelegate, UITableViewDataSource, DetailViewControllerDelegate>
 
 @property(nonatomic, strong) UITableView *groupedTableView;
+@property(nonatomic, strong) UIRefreshControl *groupedRefreshControl;
 
 @end
 
@@ -33,34 +34,50 @@ extern AppDelegate *appDelegate;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    // TODO: 下拉刷新
     appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
-    UITableView *groupedView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, appDelegate.window.bounds.size.width, appDelegate.window.bounds.size.height) style:UITableViewStyleGrouped];
-    self.groupedTableView = groupedView;
+    self.groupedTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, appDelegate.window.bounds.size.width, appDelegate.window.bounds.size.height)
+                                                         style:UITableViewStyleGrouped];
+    
+    // 下拉刷新
+    self.groupedRefreshControl = [[UIRefreshControl alloc] init];
+    self.groupedRefreshControl.tintColor = UIColor.redColor;
+    self.groupedRefreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"Refreshing..."];
+    [self.groupedRefreshControl addTarget:self action:@selector(groupedViewRefresh:) forControlEvents:UIControlEventValueChanged];
+    [self.groupedTableView addSubview:self.groupedRefreshControl];
     
     UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 30)];
     headerLabel.text = @"Cities Grouped";
     headerLabel.textColor = [UIColor whiteColor];
     headerLabel.backgroundColor = [UIColor blueColor];
     headerLabel.textAlignment = NSTextAlignmentCenter;
-    [groupedView setTableHeaderView:headerLabel];
+    [self.groupedTableView setTableHeaderView:headerLabel];
     
     UILabel *footerLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 30)];
     footerLabel.text = @"Crated by Leon";
-    [groupedView setTableFooterView:footerLabel];
+    [self.groupedTableView setTableFooterView:footerLabel];
     
-    groupedView.sectionHeaderHeight = 20;
-    groupedView.sectionFooterHeight = 20;
+    UISwipeGestureRecognizer *swipeLeftGR = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeToAnotherView:)];
+    swipeLeftGR.direction = UISwipeGestureRecognizerDirectionLeft;
+    [self.groupedTableView addGestureRecognizer:swipeLeftGR];
     
-    groupedView.separatorColor = [UIColor blueColor];
-    groupedView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-    groupedView.backgroundColor = [UIColor lightGrayColor];
+    UISwipeGestureRecognizer *swipeRightGR = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeToAnotherView:)];
+    swipeRightGR.direction = UISwipeGestureRecognizerDirectionRight;
+    [self.groupedTableView addGestureRecognizer:swipeRightGR];
     
-    groupedView.delegate = self;
-    groupedView.dataSource = self;
+    self.groupedTableView.sectionHeaderHeight = 20;
+    self.groupedTableView.sectionFooterHeight = 20;
     
-    [self.view addSubview:groupedView];
+    self.groupedTableView.separatorColor = [UIColor blueColor];
+    self.groupedTableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    self.groupedTableView.backgroundColor = [UIColor lightGrayColor];
+    
+    self.groupedTableView.delegate = self;
+    self.groupedTableView.dataSource = self;
+    
+    self.delegate = appDelegate;
+    
+    [self.view addSubview:self.groupedTableView];
 }
 
 /*
@@ -100,8 +117,8 @@ extern AppDelegate *appDelegate;
 }
 
 // cell
+static NSString *ID = @"GroupedCell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *ID = @"GroupedCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
     
     if (cell == nil) {
@@ -123,7 +140,7 @@ extern AppDelegate *appDelegate;
         cell.textLabel.text = [[CityForGrouped sharedSingleton].third objectAtIndex:indexPath.row];
         cell.imageView.image = [UIImage imageNamed:@"pic3"];
         break;
-            
+        
         default:
             break;
     }
@@ -174,6 +191,17 @@ extern AppDelegate *appDelegate;
     [self presentViewController:detailViewController animated:YES completion:nil];
 }
 
+#pragma mark - RefreshControl
+
+- (void)groupedViewRefresh:(id)paramSender {
+    int delaySec = 1.0f;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delaySec * NSEC_PER_SEC);
+    
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void) {
+        [self.groupedRefreshControl endRefreshing];
+    });
+}
+
 #pragma mark - DetailViewControllerDelegate
 
 - (void)detailViewControllerDidChange:(DetailViewController *)viewController {
@@ -195,6 +223,18 @@ extern AppDelegate *appDelegate;
     
     [alertController addAction:okAction];
     [self presentViewController:alertController animated:YES completion:nil];
+}
+
+#pragma mark - Swipe Gesture Recognizer
+
+- (void)swipeToAnotherView:(UISwipeGestureRecognizer *)swipeGR {
+    if (swipeGR.direction == UISwipeGestureRecognizerDirectionLeft) {
+        NSLog(@"from groupedVC: swipe to left!");
+        [self.delegate switchToLeftViewFromIndex:self.tabBarController.selectedIndex];
+    } else if (swipeGR.direction == UISwipeGestureRecognizerDirectionRight) {
+        NSLog(@"from groupedVC: swipe to right!");
+        [self.delegate switchToRightViewFromIndex:self.tabBarController.selectedIndex];
+    }
 }
 
 @end

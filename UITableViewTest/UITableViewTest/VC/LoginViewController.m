@@ -39,7 +39,6 @@
     [loginAlertVC addTextFieldWithConfigurationHandler:^(UITextField *textField) {
         textField.placeholder = @"username";
         [textField becomeFirstResponder];   // 光标首先定位在username
-        // TODO: bugfix - no keyboard shown up
     }];
     
     [loginAlertVC addTextFieldWithConfigurationHandler:^(UITextField *textField) {
@@ -76,19 +75,13 @@
 
 - (void)loginSuccess {
     // login successed
-    AppDelegate *appdelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    
     UIAlertController *loginSuccessAlert = [UIAlertController alertControllerWithTitle:@"Success!"
                                                                                message:@"Login success"
                                                                         preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *jumpAction = [UIAlertAction actionWithTitle:@"OK"
                                                          style:UIAlertActionStyleDefault
                                                        handler:^(UIAlertAction *action){
-        UITabBarController *mainTabBarVC = (UITabBarController *)[appdelegate displayMainViewAfterLogin];    // show mainView after login
-        // TODO: add a transition from login page to main view
-        [self presentViewController:mainTabBarVC
-                           animated:YES
-                         completion:nil];        
+        [self jumpView];
     }];
     [loginSuccessAlert addAction:jumpAction];
     [self presentViewController:loginSuccessAlert animated:YES
@@ -112,6 +105,18 @@
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     // 有键盘出现时，点击空白处收回键盘
     [self.view endEditing:YES];
+}
+
+- (void)jumpView {
+    AppDelegate *appdelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    UITabBarController *mainTabBarVC = (UITabBarController *)[appdelegate prepareMainView];       // show mainView after login
+    [UIView transitionFromView:self.view        // transition
+                        toView:mainTabBarVC.view
+                      duration:1.0
+                       options:UIViewAnimationOptionTransitionFlipFromBottom
+                    completion:^(BOOL finished){
+            [self.view removeFromSuperview];
+    }];
 }
 
 @end

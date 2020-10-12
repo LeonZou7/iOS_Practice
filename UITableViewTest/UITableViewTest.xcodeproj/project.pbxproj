@@ -19,8 +19,10 @@
 		2B88E2B824FF76DC00CAACF9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B88E2B724FF76DC00CAACF9 /* main.m */; };
 		2B88E2C224FF76DC00CAACF9 /* UITableViewTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B88E2C124FF76DC00CAACF9 /* UITableViewTestTests.m */; };
 		2B88E2CD24FF76DC00CAACF9 /* UITableViewTestUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B88E2CC24FF76DC00CAACF9 /* UITableViewTestUITests.m */; };
+		2B8FE85D2520BC9200E6AB6F /* LoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8FE85C2520BC9200E6AB6F /* LoadingViewController.m */; };
 		2BBA341925009F93003FEA44 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BBA341825009F93003FEA44 /* DetailViewController.m */; };
 		2BCC91D12516FF910028DAFE /* ScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCC91D02516FF910028DAFE /* ScrollViewController.m */; };
+		2BE48079253407F800659EB7 /* ZRandomDataGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE48078253407F800659EB7 /* ZRandomDataGenerator.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,10 +69,15 @@
 		2B88E2C824FF76DC00CAACF9 /* UITableViewTestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UITableViewTestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B88E2CC24FF76DC00CAACF9 /* UITableViewTestUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UITableViewTestUITests.m; sourceTree = "<group>"; };
 		2B88E2CE24FF76DC00CAACF9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2B8FE85B2520BC9200E6AB6F /* LoadingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoadingViewController.h; sourceTree = "<group>"; };
+		2B8FE85C2520BC9200E6AB6F /* LoadingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoadingViewController.m; sourceTree = "<group>"; };
+		2B9700012522DE1B00E20139 /* SwitchViewProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwitchViewProtocol.h; sourceTree = "<group>"; };
 		2BBA341725009F93003FEA44 /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		2BBA341825009F93003FEA44 /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		2BCC91CF2516FF910028DAFE /* ScrollViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScrollViewController.h; sourceTree = "<group>"; };
 		2BCC91D02516FF910028DAFE /* ScrollViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScrollViewController.m; sourceTree = "<group>"; };
+		2BE48077253407F800659EB7 /* ZRandomDataGenerator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZRandomDataGenerator.h; sourceTree = "<group>"; };
+		2BE48078253407F800659EB7 /* ZRandomDataGenerator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZRandomDataGenerator.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +114,8 @@
 				2B275847250A3E7300668F41 /* CityForGrouped.m */,
 				2B39288F2511C1EB00528191 /* User.h */,
 				2B3928902511C1EB00528191 /* User.m */,
+				2BE48077253407F800659EB7 /* ZRandomDataGenerator.h */,
+				2BE48078253407F800659EB7 /* ZRandomDataGenerator.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -114,6 +123,7 @@
 		2B275849250A596600668F41 /* VC */ = {
 			isa = PBXGroup;
 			children = (
+				2B9700012522DE1B00E20139 /* SwitchViewProtocol.h */,
 				2B0B401B2519A0F500B06E12 /* LoginViewController.h */,
 				2B0B401C2519A0F500B06E12 /* LoginViewController.m */,
 				2B88E2AB24FF76D900CAACF9 /* CameraViewController.h */,
@@ -122,10 +132,12 @@
 				2B27584B250A599100668F41 /* PlainViewController.m */,
 				2B27583F25076EF500668F41 /* GroupViewController.h */,
 				2B27584025076EF500668F41 /* GroupViewController.m */,
-				2BBA341725009F93003FEA44 /* DetailViewController.h */,
-				2BBA341825009F93003FEA44 /* DetailViewController.m */,
 				2BCC91CF2516FF910028DAFE /* ScrollViewController.h */,
 				2BCC91D02516FF910028DAFE /* ScrollViewController.m */,
+				2BBA341725009F93003FEA44 /* DetailViewController.h */,
+				2BBA341825009F93003FEA44 /* DetailViewController.m */,
+				2B8FE85B2520BC9200E6AB6F /* LoadingViewController.h */,
+				2B8FE85C2520BC9200E6AB6F /* LoadingViewController.m */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -317,6 +329,8 @@
 				2B0B401D2519A0F500B06E12 /* LoginViewController.m in Sources */,
 				2BCC91D12516FF910028DAFE /* ScrollViewController.m in Sources */,
 				2B88E2AD24FF76D900CAACF9 /* CameraViewController.m in Sources */,
+				2BE48079253407F800659EB7 /* ZRandomDataGenerator.m in Sources */,
+				2B8FE85D2520BC9200E6AB6F /* LoadingViewController.m in Sources */,
 				2B27584C250A599100668F41 /* PlainViewController.m in Sources */,
 				2B88E2A724FF76D900CAACF9 /* AppDelegate.m in Sources */,
 				2B88E2B824FF76DC00CAACF9 /* main.m in Sources */,

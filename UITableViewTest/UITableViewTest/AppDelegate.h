@@ -6,12 +6,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "VC/SwitchViewProtocol.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate, SwitchViewProtocol>
 
 @property(nonatomic, strong) UIWindow* window;
 
-- (UIViewController *)displayMainViewAfterLogin;
+- (UIViewController *)prepareMainView;
 
 @end
 

@@ -14,6 +14,9 @@
 
 @interface AppDelegate ()
 
+@property(nonatomic, strong)UINavigationController *navigationController;
+@property(nonatomic, strong)UITabBarController *tabBarController;
+
 @end
 
 @implementation AppDelegate
@@ -28,7 +31,8 @@
      */
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-        
+    
+    // login page
     LoginViewController *loginVC = [[LoginViewController alloc] init];
     self.window.rootViewController = loginVC;
     
@@ -37,24 +41,45 @@
     return YES;
 }
 
-- (UIViewController *)displayMainViewAfterLogin {
+#pragma mark - View Methods
+
+- (UIViewController *)prepareMainView {
     // mainView
+    CameraViewController *cameraVC = [[CameraViewController alloc] init];
     PlainViewController *plainVC = [[PlainViewController alloc] init];
     GroupViewController *groupedVC = [[GroupViewController alloc] init];
     ScrollViewController *scrollVC = [[ScrollViewController alloc] init];
 
-    // TODO: create a scrollView which contains 2 tableView (plain and grouped)
-    CameraViewController *cameraVC = [[CameraViewController alloc] init];   // navigationController's default view
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:cameraVC];
-    navigationController.tabBarItem.title = @"Home";
+    _navigationController = [[UINavigationController alloc] initWithRootViewController:cameraVC];   // cameraVC is navigationController's default view
+    _navigationController.tabBarItem.title = @"Home";
 
-    UITabBarController *tabBarController = [[UITabBarController alloc] init];
-
-    [tabBarController setViewControllers:@[navigationController, plainVC, groupedVC, scrollVC]];
-
-    self.window.rootViewController = tabBarController;
+    _tabBarController = [[UITabBarController alloc] init];
+    [_tabBarController setViewControllers:@[_navigationController, plainVC, groupedVC, scrollVC]];
+    self.window.rootViewController = _tabBarController;
     
-    return tabBarController;
+    return _tabBarController;
+}
+
+#pragma mark - Switch Methods
+
+- (void)switchToLeftViewFromIndex:(NSInteger)index {
+    if (index < [self.tabBarController.viewControllers count] - 1) {
+        [self.tabBarController setSelectedIndex:index + 1];
+        NSLog(@"from Appdelegate: View %ld switches to View %ld", index, index + 1);
+    } else {
+        [self.tabBarController setSelectedIndex:0];
+        NSLog(@"from Appdelegate: back to View 0");
+    }
+}
+
+- (void)switchToRightViewFromIndex:(NSInteger)index {
+    if (index > 0) {
+        [self.tabBarController setSelectedIndex:index - 1];
+        NSLog(@"from Appdelegate: View %ld switches to View %ld", index, index - 1);
+    } else {
+        [self.tabBarController setSelectedIndex:[self.tabBarController.viewControllers count] - 1];
+        NSLog(@"from Appdelegate: back to end View");
+    }
 }
 
 @end

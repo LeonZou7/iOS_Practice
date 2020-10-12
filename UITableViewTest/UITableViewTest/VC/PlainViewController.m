@@ -55,6 +55,15 @@ AppDelegate *appDelegate;
     UITapGestureRecognizer *labelTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(touchToGroupView:)];
     [headLabel addGestureRecognizer:labelTapGestureRecognizer];
     
+    // swipe gesture recognizer
+    UISwipeGestureRecognizer *swipeLeftGR = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeToAnotherView:)];
+    swipeLeftGR.direction = UISwipeGestureRecognizerDirectionLeft;
+    [tableView addGestureRecognizer:swipeLeftGR];
+    
+    UISwipeGestureRecognizer *swipeRightGR = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeToAnotherView:)];
+    swipeRightGR.direction = UISwipeGestureRecognizerDirectionRight;
+    [tableView addGestureRecognizer:swipeRightGR];
+    
     UILabel* footerLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 30)];
     [footerLabel setText:@"Created by Leon"];
     [tableView setTableFooterView:footerLabel];     //设置页脚
@@ -70,6 +79,9 @@ AppDelegate *appDelegate;
     
     tableView.delegate = self;
     tableView.dataSource = self;
+    
+    // TODO: add gesture recognizer for switching views
+    self.delegate = appDelegate;
     
     [self.view addSubview:tableView];
 }
@@ -88,8 +100,9 @@ AppDelegate *appDelegate;
 
 //@required
 //返回每行的单元格，提供显示的数据
+static NSString* ID = @"PlainCell";
 -(UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString* ID = @"PlainCell";
+    
     UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:ID];   //可重用cell
     
     if(cell == nil) {   //当取出的cell是nil时，创建一个cell并绑定ID
@@ -175,9 +188,9 @@ AppDelegate *appDelegate;
 
 //@optional
 //退出编辑模式时调用的方法
--(void) tableView:(UITableView *)tableView didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-}
+//-(void) tableView:(UITableView *)tableView didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath {
+//
+//}
 
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     DetailViewController* detailController = [[DetailViewController alloc] init];
@@ -193,16 +206,16 @@ AppDelegate *appDelegate;
     [self.plainTableView reloadData];
 }
 
-#pragma mark - method
+#pragma mark - Swipe Gesture Recognizer
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)swipeToAnotherView:(UISwipeGestureRecognizer *)swipeGR {
+    if (swipeGR.direction == UISwipeGestureRecognizerDirectionLeft) {
+        NSLog(@"from plainVC: swipe to left!");
+        [self.delegate switchToLeftViewFromIndex:self.tabBarController.selectedIndex];
+    } else if (swipeGR.direction == UISwipeGestureRecognizerDirectionRight) {
+        NSLog(@"from plainVC: swipe to right!");
+        [self.delegate switchToRightViewFromIndex:self.tabBarController.selectedIndex];
+    }
 }
-*/
 
 @end

@@ -29,11 +29,29 @@
     UIButton *cameraButton = [[UIButton alloc] initWithFrame:CGRectMake(100, self.view.bounds.size.height - 250, 150, 50)];
     [cameraButton setBackgroundColor:[UIColor systemGrayColor]];
     [cameraButton setTitle:@"Select" forState:UIControlStateNormal];
+    cameraButton.titleLabel.textAlignment = NSTextAlignmentCenter;
     [cameraButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [cameraButton addTarget:self action:@selector(clickToCamera:) forControlEvents:UIControlEventTouchUpInside];
         
+    UISwipeGestureRecognizer *swipeLeftToRightGR = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeToLeft:)];
+    swipeLeftToRightGR.direction = UISwipeGestureRecognizerDirectionLeft;
+    [self.view addGestureRecognizer:swipeLeftToRightGR];
+    
+    UISwipeGestureRecognizer *swipeRightToLeftGR = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeToRight:)];
+    swipeRightToLeftGR.direction = UISwipeGestureRecognizerDirectionRight;
+    [self.view addGestureRecognizer:swipeRightToLeftGR];
+    
+    // TODO: unfinished animation
+    CATransition *transition = [CATransition animation];
+    transition.type = kCATransitionFade;
+    transition.subtype = kCATransitionFromLeft;
+    transition.duration = 1.0;
+    [self.view.layer addAnimation:transition forKey:nil];
+    
     [self.view addSubview:self.imgView];
     [self.view addSubview:cameraButton];
+    
+    self.delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
 }
 
 #pragma mark - cameraButton Methods
@@ -144,10 +162,16 @@
     self.imgView.image = img;
 }
 
-#pragma mark - scrollViewButton Methods
+#pragma mark - Switch Gesture Recognizer
 
-- (void)clickToScrollView:(UIButton *)sender {
-    
+- (void)swipeToLeft:(UISwipeGestureRecognizer *)gestureRecognizer {
+    NSLog(@"from cameraVC: swipe to left!");
+    [self.delegate switchToLeftViewFromIndex:self.tabBarController.selectedIndex];
+}
+
+- (void)swipeToRight:(UISwipeGestureRecognizer *)swipeGR {
+    NSLog(@"from cameraVC: swipe to right!");
+    [self.delegate switchToRightViewFromIndex:self.tabBarController.selectedIndex];
 }
 
 @end

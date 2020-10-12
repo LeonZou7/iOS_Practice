@@ -6,10 +6,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SwitchViewProtocol.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface GroupViewController : UIViewController
+
+@property(nonatomic, weak) id<SwitchViewProtocol> delegate;
 
 @end
 

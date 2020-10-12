@@ -3,6 +3,7 @@
 //  UITableViewTest
 //
 //  Created by Leon Zou on 2020/9/16.
+//  EXAMPLE: A strict singleton
 //
 
 #import "User.h"
@@ -24,11 +25,30 @@ static User *sharedSingleton = nil;
     return sharedSingleton;
 }
 
++ (instancetype)allocWithZone:(struct _NSZone *)zone {
+    static dispatch_once_t once;
+    dispatch_once(&once, ^{
+        if (sharedSingleton == nil) {
+            sharedSingleton = [super allocWithZone:zone];
+        }
+    });
+    
+    return sharedSingleton;
+}
+
 - (instancetype)init {
     if (self = [super init]) {
         _username = @"admin";
         _password = @"123";
     }
+    return self;
+}
+
+- (id)copy {
+    return self;
+}
+
+- (id)mutableCopy {
     return self;
 }
 
